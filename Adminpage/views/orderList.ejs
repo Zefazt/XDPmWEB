@@ -1,0 +1,85 @@
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Quản lý đơn hàng</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Quản lý đơn hàng</a></li>
+                            <li class="active">Hiển thị</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Đơn Hàng</strong>&nbsp;
+                    </div>
+                    <div class="card-body">
+                    <a href="#"><button type="button" class="btn btn-primary btn-sm" style="float: right;">Thêm</button></a>
+                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Mã khách hàng</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Ngày lập</th>
+                                    <th>Tổng thành tiền</th>
+                                    <th>Pttt</th>
+                                    <th>Tình trạng</th>
+                                    <th>Chi tiết đơn hàng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <% for(let i=0; i < dataOrder.length; i++) { %>
+                                    <tr>
+                                      <td><%= dataOrder[i].Madh %></td>
+                                      <td><%= dataOrder[i].Makh %></td>
+                                      <td><%= dataOrder[i].Diachi %></td>
+                                      <td><%= dataOrder[i].Sdt %></td>
+                                      <td><%= dataOrder[i].Email %></td>
+                                      <td><%= dataOrder[i].Ngaylap%></td>
+                                      <td><%= dataOrder[i].Tongtien %></td>
+                                      <td><%= dataOrder[i].Pttt %></td>
+                                      <td><%= dataOrder[i].Tinhtrang %></td>
+                                      <td><a href="/orderDetails?Madh=<%= dataOrder[i].Madh %>"><button type="button" class="btn btn-link">Xem</button></a></td>
+                                      <td>
+                                        <a href="/orderEdit?id=<%=dataOrder[i].Madh%>"><button type="button" class="btn btn-secondary btn-sm">Sửa</button></a>  
+                                        <a href="/orderDelete?id=<%=dataOrder[i].Madh%>" onClick=" confirm('Bạn có chắc muốn xóa?')"><button type="button" class="btn btn-warning btn-sm">Xóa</button></a>
+                                    </td>
+                                    </tr>
+                                 <% } %>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div><!-- .animated -->
+</div><!-- .content -->

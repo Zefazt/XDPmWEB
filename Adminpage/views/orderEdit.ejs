@@ -1,0 +1,107 @@
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Quản lý đơn hàng</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Quản lý đơn hàng</a></li>
+                            <li class="active">Sửa đơn hàng</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+
+        <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Sửa đơn hàng</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <form action="/orderEdit" method="POST" enctype="multipart/form-data" class="form-horizontal">  
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Mã đơn hàng</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Madh" name="Madh" value="<%=data[0].Madh %>" READONLY class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">Mã khách hàng</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="Makh" id="Makh" class="form-control">
+                                        <option value="<%=data[0].Makh%>"><%= data[0].Makh %></option>
+                                        <% for(let i = 0; i< data[1].length; i++){ %>   
+                                        <option value="<%= data[1][i].Makh %>"><%= data[1][i].Tenkh %></option>
+                                        <% } %> 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Địa chỉ</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Diachi" name="Diachi" value="<%= data[0].Diachi %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Số điện thoại</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Sdt" name="Sdt" value="<%= data[0].Sdt %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Email" name="Email" value="<%= data[0].Email %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Ngày lập</label></div>
+                                <div class="col-12 col-md-9"><input type="date" id="Ngaylap" name="Ngaylap" value="<%= data[0].Ngaylap %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="number-input" class=" form-control-label">Tổng tiền</label></div>
+                                <div class="col-12 col-md-9"><input type="number" id="Tongtien" name="Tongtien" value="<%= data[0].Tongtien %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label">Phương thức thanh toán</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="Pttt" id="Pttt" class="form-control">
+                                        <option value="<%= data[0].Pttt %>"><%= data[0].Pttt %></option>                                        
+                                        <option value="Tiền mặt">Tiền mặt</option>
+                                        <option value="Internet Banking">Internet Banking</option> 
+                                        <option value="Paypal">Paypal</option>
+                                        <option value="Airpay">Airpay</option>               
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tình trạng</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Tinhtrang" name="Tinhtrang" value="<%= data[0].Tinhtrang %>" class="form-control"></div>
+                            </div>
+                            
+                            <div  style="float:right;">
+                        <button type="submit" class="btn btn-primary " name="submit" value="submit">
+                            <i class="fa ti-plus"></i> Sửa
+                        </button>
+                        <button type="submit" class="btn btn-warning" name="reset" value="reset">
+                            <i class="fa ti-reload"></i> Reset
+                        </button>
+                    </div>
+                        </form>
+                    </div>
+                  
+                </div>
+           
+            </div>
+
+
+
+        </div>
+    </div><!-- .animated -->
+</div><!-- .content -->

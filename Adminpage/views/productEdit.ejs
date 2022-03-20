@@ -1,0 +1,124 @@
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Quản lý sản phẩm</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Quản lý sản phẩm</a></li>
+                            <li class="active">Sửa sản phẩm</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+
+        <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Sửa sản phẩm</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <form action="/productEdit" method="POST" enctype="multipart/form-data" class="form-horizontal">  
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Mã sản phẩm</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Masp" name="Masp" value="<%=data[0].Masp %>" READONLY class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên sản phẩm</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Tensp" name="Tensp" value="<%= data[0].Tensp %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">Danh mục sản phẩm</label></div>
+                                <div class="col-12 col-md-9">
+                                    
+                                    <select name="Madm" id="Madm" class="form-control">
+                                        <option value="<%=data[0].Madm%>"><%= data[0].Madm %></option>
+                                        <% for(let i = 0; i< data[1].length; i++){ %>   
+                                        <option value="<%= data[1][i].Madm %>"><%= data[1][i].Tendm %></option>
+                                        <% } %> 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Năm sản xuất</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Namsx" name="Namsx" value="<%= data[0].Namsx %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label">Tình trạng</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="Tinhtrang" id="Tinhtrang" class="form-control">
+                                        <option value="<%= data[0].Tinhtrang %>"><%= data[0].Tinhtrang %></option>                                        
+                                        <option value="Mới">Mới</option>
+                                        <option value="Cũ">Cũ</option>            
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Hãng sản xuất</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="Hangsx" name="Hangsx" value="<%= data[0].Hangsx %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label">Size</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="Size" id="Size" class="form-control">
+                                        <option value="<%= data[0].Size %>"><%= data[0].Size %></option>   
+                                        <option value="S">S</option>                                       
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>  
+                                        <option value="XL">XL</option>  
+                                        <option value="XXL">XXL</option>            
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="number-input" class=" form-control-label">Đơn giá</label></div>
+                                <div class="col-12 col-md-9"><input type="number" id="Dongia" name="Dongia" value="<%= data[0].Dongia %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="number-input" class=" form-control-label">Số lượng</label></div>
+                                <div class="col-12 col-md-9"><input type="number" id="Soluong" name="Soluong" value="<%= data[0].Soluong %>" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="file-input" class=" form-control-label" >Hình ảnh sản phẩm</label></div>
+                                <div class="col-12 col-md-9"><input type="file" id="hinhanh" name="hinhanh" value="<%= data[0].hinhanh %>" class="form-control-file" multiple></div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="file-input" class=" form-control-label" >Nội dung</label></div>
+                                <div class="col-12 col-md-9"><textarea rows="10" cols="83" name="mota"><%= data[0].mota %></textarea></div>
+                            </div>
+                            
+                            <div  style="float:right;">
+                        <button type="submit" class="btn btn-primary " name="submit" value="submit">
+                            <i class="fa ti-plus"></i> Sửa
+                        </button>
+                        <button type="submit" class="btn btn-warning" name="reset" value="reset">
+                            <i class="fa ti-reload"></i> Reset
+                        </button>
+                    </div>
+                        </form>
+                    </div>
+                  
+                </div>
+           
+            </div>
+
+
+
+        </div>
+    </div><!-- .animated -->
+</div><!-- .content -->
