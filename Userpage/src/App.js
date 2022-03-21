@@ -2,12 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import Slider from "./components/slider";
-import Banner from "./components/banner";
 import Product from "./components/product";
 import Footer from "./components/footer";
-import Backtotop from "./components/backtotop";
-import Modal from "./components/modal";
 import About from "./components/about";
 import Contact from "./components/contact";
 import Blog from "./components/blog";
@@ -25,7 +21,7 @@ function App() {
         <Route path="/productdetail/:productId" element={<Productdetails />}></Route>
         {/* <Route path="/productdetail" element={<Productdetails />}></Route> */}
         <Route path="/account" element={<Account />}></Route>
-          <Route path="/Home" element={<Home />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/product" element={<Product />}></Route>
           <Route path="/ShopingCart" element={<ShopingCart />}></Route>
           <Route path="/blog" element={<Blog />}></Route>

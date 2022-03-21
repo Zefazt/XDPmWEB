@@ -1,8 +1,6 @@
-import Banner from "./banner";
-import Product from "./product";
-import Slider from "./slider";
-import Blog from "./blog";
+import React from "react";
 import Axios from 'axios';
+import { Outlet, Link } from "react-router-dom";
 import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 export default function Productdetails() {
@@ -10,7 +8,7 @@ export default function Productdetails() {
 
   const {productId} = useParams();
 
-  const [product,setProduct] = useState([])
+  const [product,setProduct] = useState(null)
   
    useEffect(() =>{
     Axios.get(`https://heavenshop.herokuapp.com/product_by_id?id=${productId}`)
@@ -23,8 +21,11 @@ export default function Productdetails() {
 
   },[])
   
-
+  if(product === null){
+    return <div>Loading....!</div>
+  }else{
   return (
+  
     
     <div>
 
@@ -40,7 +41,8 @@ export default function Productdetails() {
                     <div className="slick3 gallery-lb">
                       <div className="item-slick3" data-thumb="images/product-detail-01.jpg">
                         <div className="wrap-pic-w pos-relative">
-                        <img src={`../images/product/${product.hinhanh}`} />
+
+                        <img src={require(`../images/product/${product.hinhanh}`)} />
                       
                         </div>
                       </div>
@@ -113,19 +115,19 @@ export default function Productdetails() {
                   {/*  */}
                   <div className="flex-w flex-m p-l-100 p-t-40 respon7">
                     <div className="flex-m bor9 p-r-10 m-r-11">
-                      <a href="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+                      <Link to ="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
                         <i className="zmdi zmdi-favorite" />
-                      </a>
+                      </Link>
                     </div>
-                    <a href="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+                    <Link to ="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
                       <i className="fa fa-facebook" />
-                    </a>
-                    <a href="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+                    </Link>
+                    <Link to ="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
                       <i className="fa fa-twitter" />
-                    </a>
-                    <a href="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+                    </Link>
+                    <Link to ="#" className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
                       <i className="fa fa-google-plus" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -294,5 +296,6 @@ export default function Productdetails() {
 
       </div>
     );
+                  }
   }
   

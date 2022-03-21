@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import { Outlet, Link } from "react-router-dom";
-import Productdetails from "./productdetail";
 export default function Product() {
   
   const [item, setItem] = useState([]);

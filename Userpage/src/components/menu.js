@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cart from "./cart";
 import Search from "./search";
 
@@ -38,14 +38,14 @@ export default function Menu() {
           <div className="wrap-menu-desktop how-shadow1">
             <nav className="limiter-menu-desktop container">
               {/* Logo desktop */}
-              <Link to="/home" >
+              <Link to="/" exact ="true" >
               <h1 style={logo}>Heaven Shop</h1>
               </Link>
               {/* Menu desktop */}
               <div className="menu-desktop">
                 <ul className="main-menu">
                   <li>
-                    <Link to="/home">Home</Link>
+                    <Link to="/" exact ="true">Home</Link>
                     
                   </li>
                   <li>
